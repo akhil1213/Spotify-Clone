@@ -1,11 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
 import { loginUri, getTokenFromUrl } from "./spotify";
 function Login() {
-  useEffect(() => {
-    const token = getTokenFromUrl();
-    console.log(token);
-  }, []);
   return (
     <div className="login">
       <img
