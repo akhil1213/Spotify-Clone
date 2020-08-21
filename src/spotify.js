@@ -1,8 +1,8 @@
 const authorizeEndpoint = "https://accounts.spotify.com/authorize";
 
-const redirectUri = "http://localhost:3000/";
+const redirectUri = "http://akhils-mbp:3000/";
 
-const clientId = "bb775a658021441788eef57ab25ac524";
+const clientId = "407bf62db95d4cc78966af43826c1070";
 
 const scopes = [
   "user-read-currently-playing", //Read currently playing music on any device that the users using
