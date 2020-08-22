@@ -12,3 +12,12 @@
 .sidebar__title {
   padding-top: 20px;
 }
+.sidebar__title strong {
+  margin-left: 10px;
+  font-size: 12px;
+}
+.sidebar__title hr {
+  border: 1px solid #282828;
+  margin-top: 11px;
+  width: 90%;
+}

@@ -4,11 +4,7 @@ function SidebarOption({ optionText, Icon }) {
   return (
     <div className="sidebarOption">
       {Icon && <Icon className="sidebarOption__icon" />}
-      {Icon ? (
-        <h4>{optionText}</h4>
-      ) : (
-        <p className="sidebarOption__text">{optionText}</p>
-      )}
+      {Icon ? <h4>{optionText}</h4> : <p>{optionText}</p>}
     </div>
   );
 }

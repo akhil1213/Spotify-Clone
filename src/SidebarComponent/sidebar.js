@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./sidebar.css";
 import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";
 import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 // import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import SidebarOption from "../SidebarOption/SidebarOption";
-function sidebar() {
+import { useDataLayerValue } from "../DataLayer";
+
+function Sidebar() {
+  const [{ userPlayList }, dispatch] = useDataLayerValue();
+  console.log(userPlayList);
   return (
     <div className="sidebar">
       <img
@@ -19,8 +23,11 @@ function sidebar() {
         <strong>PLAYLISTS</strong>
         <hr />
       </div>
+      {userPlayList?.items?.map((playlist) => {
+        return <SidebarOption optionText={playlist.name} />;
+      })}
     </div>
   );
 }
 
-export default sidebar;
+export default Sidebar;
