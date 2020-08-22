@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Login.css";
-import { loginUri, getTokenFromUrl } from "./spotify";
+import { loginUri, getTokenFromUrl } from "../spotify";
 function Login() {
   return (
     <div className="login">

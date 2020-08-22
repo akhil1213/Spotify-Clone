@@ -1,5 +1,6 @@
 export const initialState = {
   user: null,
+  token: "dkgmdfgkmd",
 };
 
 const reducer = (state, action) => {
@@ -9,6 +10,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: action.payload,
+      };
+    case "SET_TOKEN":
+      return {
+        ...state,
+        token: action.payload,
       };
   }
 };
