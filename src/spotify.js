@@ -1,6 +1,6 @@
 const authorizeEndpoint = "https://accounts.spotify.com/authorize";
 
-const redirectUri = "http://akhils-mbp:3000/";
+const redirectUri = "http://localhost:3000/";
 
 const clientId = "407bf62db95d4cc78966af43826c1070";
 

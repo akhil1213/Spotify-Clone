@@ -38,11 +38,15 @@ function App() {
         console.log(playlists);
         dispatch({ type: "SET_PLAYLIST", payload: playlists });
       });
+      spotify.getPlaylist("5iFdX0TRefCicy5HirhIm8").then((response) =>
+        dispatch({
+          type: "SET_DISCOVER_WEEKLY",
+          discover_weekly: response,
+        })
+      );
     }
     window.location.hash = ""; //security purposes.
   }, []);
-  console.log(user);
-  console.log(token);
   return (
     <div className="app">
       {token ? <Player spotify={spotify} /> : <Login />}
