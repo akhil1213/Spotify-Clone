@@ -36,10 +36,6 @@ function Body({ spotify }) {
     const headers = {'Authorization':`Bearer ${token}`,'Content-Type': 'application/json',}
 
     const body = JSON.stringify({ uris: [`spotify:track:${id}`] })
-    // return fetch('https://api.spotify.com/v1/me/player/devices',{
-    //   method:'GET',
-    //   headers
-    // }).then((res)=>console.log(res))
 
     // return fetch('https://api.spotify.com/v1/me/player/play',{
     //   method:'PUT',
@@ -54,6 +50,7 @@ function Body({ spotify }) {
       })
       .then((res) => {
         spotify.getMyCurrentPlayingTrack().then((r) => {
+          console.log(r)
           dispatch({
             type: "SET_ITEM",
             item: r.item,

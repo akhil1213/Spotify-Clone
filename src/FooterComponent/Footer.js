@@ -7,17 +7,19 @@ import ShuffleIcon from "@material-ui/icons/Shuffle";
 import RepeatIcon from "@material-ui/icons/Repeat";
 import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
 import VolumeDownIcon from "@material-ui/icons/VolumeDown";
-import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline"
+import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
 import Slider from "@material-ui/core/Slider";
 import Grid from "@material-ui/core/Grid";
 import {useDataLayerValue} from "../DataLayer"
 function Footer({ spotify }) {
-  const [{ token, item, playing }, dispatch] = useDataLayerValue();
-  console.log(item)
+  const [{ token, item, playing,deviceName }, dispatch] = useDataLayerValue();
   useEffect(() => {
     spotify.getMyCurrentPlaybackState().then((r) => {
       console.log(r);
-
+      dispatch({
+        type:"SET_DEVICE_NAME",
+        deviceName:r.device.name
+      })
       dispatch({
         type: "SET_PLAYING",
         playing: r.is_playing,
@@ -102,7 +104,7 @@ function Footer({ spotify }) {
           <PauseCircleOutlineIcon
             onClick={handlePlayPause}
             fontSize="large"
-            className="footer__icon"
+            className="footer__icon pause"
           />
         ) : (
           <PlayCircleOutlineIcon
@@ -127,6 +129,13 @@ function Footer({ spotify }) {
           </Grid>
         </Grid>
       </div>
+      {
+        playing &&
+        <div className="footer__deviceName">
+          <p>Currently playing on {deviceName}</p>
+        </div>
+      }
+      
     </div>
   );
 }

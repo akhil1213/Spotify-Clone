@@ -44,6 +44,11 @@ function App() {
           discover_weekly: response,
         })
       );
+      const headers = {'Authorization':`Bearer ${tokenInfo.access_token}`,'Content-Type': 'application/json',}
+      fetch('https://api.spotify.com/v1/me/player/devices',{
+        method:'GET',
+        headers
+      }).then((res)=>console.log(res))
     }
     window.location.hash = ""; //security purposes.
   }, []);

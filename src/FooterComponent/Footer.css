@@ -47,14 +47,29 @@
   color: white;
   flex: 0.3;
 }
-
+.pause{
+  color:white !important;
+}
 .footer__albumLogo {
   height: 60px;
   width: 60px;
   margin-right: 20px;
   object-fit: contain;
 }
+.footer__deviceName{
+  display:flex;
+  justify-content: center;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  background-color: green;
+  height:20px;
 
+}
+.footer__deviceName p {
+  justify-self: center;
+  color:white;
+}
 .footer__songInfo > h4 {
   margin-bottom: 5px;
 }
