@@ -71,6 +71,10 @@ const reducer = (state, action) => {
         ...state,
         playlists: action.playlists,
       };
+    case "LOGOUT":
+      console.log('hi')
+      localStorage.removeItem('token')
+      return initialState
     default:
       return state;
   }

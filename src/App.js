@@ -14,18 +14,24 @@ function App() {
   useEffect(() => {
     const tokenInfo = getTokenFromUrl();
     console.log(tokenInfo);
-    // if (localStorage.getItem("token")) {
-    //   dispatch({ type: "SET_TOKEN", payload: localStorage.getItem("token") });
-    //   spotify.setAccessToken(tokenInfo.access_token);
-    //   console.log("hi");
-    //   spotify.getMe().then((user) => {
-    //     dispatch({ type: "SET_USER", payload: user });
-    //   });
-    //   spotify.getUserPlaylists().then((playlists) => {
-    //     dispatch({ type: "SET_PLAYLIST", payload: playlists });
-    //   });
-    // } else
-    if (tokenInfo) {
+    if (localStorage.getItem("token")) {
+      dispatch({ type: "SET_TOKEN", payload: localStorage.getItem("token") });
+      spotify.setAccessToken(localStorage.getItem("token"));
+      console.log("hi");
+      spotify.getMe().then((user) => {
+        dispatch({ type: "SET_USER", payload: user });
+      });
+      spotify.getUserPlaylists().then((playlists) => {
+        dispatch({ type: "SET_PLAYLIST", payload: playlists });
+      });
+      spotify.getPlaylist("5iFdX0TRefCicy5HirhIm8").then((response) =>
+        dispatch({
+          type: "SET_DISCOVER_WEEKLY",
+          discover_weekly: response,
+        })
+      );
+      console.log(spotify)
+    } else if (tokenInfo) {
       dispatch({ type: "SET_TOKEN", payload: tokenInfo.access_token });
 
       spotify.setAccessToken(tokenInfo.access_token);

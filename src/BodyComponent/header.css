@@ -25,5 +25,14 @@
 
 .header__right {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+}
+.header__logout{
+  background-color:green;
+  border-radius: 10px;
+  padding:10px;
+  border:none;
+  color:white;
+  margin-left:10px;
 }

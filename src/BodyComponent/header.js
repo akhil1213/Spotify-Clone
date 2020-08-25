@@ -14,6 +14,7 @@ function Header() {
       <div className="header__right">
         <Avatar src={user?.images[0]?.url} alt="noimg" />
         <h4>{user?.display_name}</h4>
+        <button className="header__logout" onClick={()=>dispatch({type:'LOGOUT'})}>Logout</button>
       </div>
     </div>
   );
