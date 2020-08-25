@@ -12,7 +12,7 @@ import Slider from "@material-ui/core/Slider";
 import Grid from "@material-ui/core/Grid";
 import {useDataLayerValue} from "../DataLayer"
 function Footer({ spotify }) {
-  const [{ token, item, playing,deviceName }, dispatch] = useDataLayerValue();
+  const [{ token, item, playing,deviceName,volume }, dispatch] = useDataLayerValue();
   useEffect(() => {
     spotify.getMyCurrentPlaybackState().then((r) => {
       console.log(r);
@@ -75,7 +75,13 @@ function Footer({ spotify }) {
       });
     });
   };
-
+  const setVolume = (newVol)=>{
+    dispatch({
+      type:"SET_VOL",
+      newVol
+    })
+    spotify.setVolume(newVol).then((res)=>console.log(res)).catch((err)=>console.log(err))
+  }
   return (
     <div className="footer">
       <div className="footer__left">
@@ -124,8 +130,8 @@ function Footer({ spotify }) {
           <Grid item>
             <VolumeDownIcon />
           </Grid>
-          <Grid item xs>
-            <Slider aria-labelledby="continuous-slider" />
+          <Grid item xs >
+            <Slider   min={0} max ={100} onChange={(e,sliderVal)=>{setVolume(sliderVal)}}aria-labelledby="continuous-slider" />
           </Grid>
         </Grid>
       </div>
@@ -133,6 +139,7 @@ function Footer({ spotify }) {
         playing &&
         <div className="footer__deviceName">
           <p>Currently playing on {deviceName}</p>
+          <p>Volume:{volume}</p>
         </div>
       }
       

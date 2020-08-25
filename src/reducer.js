@@ -5,7 +5,8 @@ export const initialState = {
   playlists: [],
   playing: false,
   item: null,
-  deviceName:''
+  deviceName:'',
+  volume:0
 };
 
 const reducer = (state, action) => {
@@ -32,6 +33,11 @@ const reducer = (state, action) => {
         ...state,
         item: action.item,
       };
+    case "SET_VOL":
+      return{
+        ...state,
+        volume:action.newVol
+      }
     case "SET_PLAYING":
       return {
         ...state,

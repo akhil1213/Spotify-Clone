@@ -17,7 +17,6 @@ function App() {
     if (localStorage.getItem("token")) {
       dispatch({ type: "SET_TOKEN", payload: localStorage.getItem("token") });
       spotify.setAccessToken(localStorage.getItem("token"));
-      console.log("hi");
       spotify.getMe().then((user) => {
         dispatch({ type: "SET_USER", payload: user });
       });
