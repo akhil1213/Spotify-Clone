@@ -7,7 +7,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import {useDataLayerValue} from "../DataLayer"
 function Body({ spotify }) {
-  const [{ discover_weekly,userPlayList }, dispatch] = useDataLayerValue();
+  const [{ discover_weekly,userPlayList,token }, dispatch] = useDataLayerValue();
   const playPlaylist = (id) => {
     spotify
       .play({
@@ -28,6 +28,26 @@ function Body({ spotify }) {
   };
 
   const playSong = (id) => {
+    console.log(id)
+    console.log(token)
+    // const body = {
+    //   uris: [`spotify:track:${id}`],
+    // }    
+    const headers = {'Authorization':`Bearer ${token}`,'Content-Type': 'application/json',}
+
+    const body = JSON.stringify({ uris: [`spotify:track:${id}`] })
+    // return fetch('https://api.spotify.com/v1/me/player/devices',{
+    //   method:'GET',
+    //   headers
+    // }).then((res)=>console.log(res))
+
+    // return fetch('https://api.spotify.com/v1/me/player/play',{
+    //   method:'PUT',
+    //   body,
+    //   headers
+    // }).then((res)=>console.log(res))
+    //   .catch((err)=>console.log(err))
+
     spotify
       .play({
         uris: [`spotify:track:${id}`],

@@ -24,7 +24,7 @@ function Sidebar() {
         <hr />
       </div>
       {userPlayList?.items?.map((playlist) => {
-        return <SidebarOption optionText={playlist.name} />;
+        return <SidebarOption key={playlist.name} optionText={playlist.name} />;
       })}
     </div>
   );
